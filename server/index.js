@@ -7,20 +7,16 @@ import postRoutes from './routes/posts.js'; // remember to use in middleware to 
 
 const app = express();
 
-// "files.exclude": {
-//   "**/.git": true,
-//   },
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
-// https://github.com/adrianhajdin/project_mern_memories
-
 // Routes
 app.use('/posts', postRoutes);  // test route -> http://localhost:5000/posts (verified it works)
 
-// SETUP MONGO DB AGAIN!
+
+// SETUP MONGO DB
 const CONNECTION_URL = 'mongodb+srv://soltis:Matthews@cluster0.u0uqh.mongodb.net/<dbname>?retryWrites=true&w=majority'
 
 // Port
@@ -33,3 +29,8 @@ mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: tr
 
 mongoose.set('useFindAndModify', false);
 
+
+// for committing to git
+// "files.exclude": {
+//   "**/.git": true,
+//   },
