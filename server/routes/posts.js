@@ -10,7 +10,7 @@ const router = express.Router();
 // });
 
 router.get('/', getPosts);
-router.get('/', createPost);
+router.post('/', createPost);
 
 export default router;
 
@@ -18,8 +18,8 @@ export default router;
 /*
 // working with the controllers posts
 
-// any routes that have something to do with posts, such as a memory card, will go here
-router.get will always take a req and res; they go inside a callback function and run depending on the success or failure of a route.
+- any routes that have something to do with posts, such as a memory card, will go here
+- router.get will always take a req and res; they go inside a callback function and run depending on the success or failure of a route.
 
 */
 

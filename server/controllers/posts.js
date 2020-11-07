@@ -16,10 +16,11 @@ export const getPosts = async (req, res) => {
 
 
 export const createPost = async (req, res) => {
-  // with post post request, we have access to req.body (in this case it will be from the form data on the front end)
+  // what to do? we need to get the information from the form in order to create a post.
+  // post request always provide access to "req.body"; will come from the form data on the front end
   const post = req.body; // form data
   const newPost = new PostMessage(post);
-
+  console.log(typeOf(newPost))
   try {
     await newPost.save;
     res.status(200).json(newPost);
