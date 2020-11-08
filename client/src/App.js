@@ -13,20 +13,23 @@ const App = () => {
 
         {/* The image is squashed; if I remove height, it corrects itself */}
 
-        <img src={memories} alt="shaking hands" height="60px" />
+        <img src={memories} alt="shaking hands" height="60" />
       </AppBar>
       <Grow in>
-        <Grid container justify="space-between" alignItems="stretch" spacing={3}>
-          <Grid item xs={12} sm={7}>
-            <Posts />
+        <Container>
+          <Grid container justify="space-between" alignItems="stretch" spacing={3}>
+            <Grid item xs={12} sm={7}>
+              <Posts />
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <Form />
+            </Grid>
           </Grid>
-          <Grid item xs={12} sm={4}>
-            <Form />
-          </Grid>
-        </Grid>
+        </Container>
       </Grow>
     </Container>
   )
 }
 
 export default App;
+
