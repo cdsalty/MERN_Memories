@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'react-thunk';
 
+// research this reducer(s)
 import reducers from './reducers';
 
 import App from './App';
@@ -17,5 +18,4 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
-
 

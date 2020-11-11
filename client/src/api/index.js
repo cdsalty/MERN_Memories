@@ -22,7 +22,7 @@ export const fetchPosts = () => axios.get(url);
 
   --> To initialize Redux:
   PART 1:
-    a. Install REDUX
+    a. Install react-redux... npm install react-redux
     b. inside the main index.js folder:
       - import { Provider } from 'react-redux' --> Provider will keep track of the store, the global state, in order to access it anywhere in the application
       - import { createStore, applyMiddleware, compose } from 'redux';
@@ -55,14 +55,18 @@ export const fetchPosts = () => axios.get(url);
       - const reducer = (state, action) => {
         switch(action.type) {
           case "FETCH_ALL":
-            return state;
+            return state; // in my case, i just put post...
           case "CREATE":
             return state;
         }
       }
 
-    PART 4: the provider and final steps...
-
+  PART 4: the provider and final steps...
+    a. (inside src index.js) now that the store's function is fully setup, wrap the provider around <App />
+    b. pass the Provider the value of the store to be passed down later
+      - <Provider store = {store}>
+          <App />
+        </Provider>,...
 
 
 */
