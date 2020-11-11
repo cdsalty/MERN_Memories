@@ -3,7 +3,7 @@
 const reducer = (posts = [], action) => {
   switch (action.type) {
     case "FETCH_ALL":
-      return posts;
+      return action.payload;  // the posts
     case "CREATE":
       return posts;
     default:
@@ -12,3 +12,5 @@ const reducer = (posts = [], action) => {
 }
 
 export default reducer;
+
+// will be used insde index.js... I will import post and pass posts to combineReducers

@@ -63,10 +63,68 @@ export const fetchPosts = () => axios.get(url);
 
   PART 4: the provider and final steps...
     a. (inside src index.js) now that the store's function is fully setup, wrap the provider around <App />
-    b. pass the Provider the value of the store to be passed down later
+    b. wrap the Provider around App and pass it the value of the store to be passed down later
       - <Provider store = {store}>
           <App />
         </Provider>,...
+
+
+  PART 5: IMPLEMENT LAST STEPS of REDUX
+    a. inside the main app.js file, import the dispatch hook
+      - import { useDispatch } from react-redux;
+    b. call on useDispatch
+      - const dispatch = useDispatch();
+        - next, how to dispatch an action??? With the " USEEFFECT HOOK  "
+        - useEffect is initally going to be just the component that mounts but later on will become 'component will update'
+    c. import useEffect and call it inside App.js
+      - import React, { useEffect } from 'react'
+      - useEffect(() => {
+          dispatch();
+        }, [])
+            \-> only problem... no action to dispatch...
+    d.
+      - import { getPost } from './actions/posts';
+      - next, pass 'getPosts()' to dispatch
+        - useEffect(() => {
+            dispatch(getPosts());
+          }, [dispatch])
+
+
+  PART 6: USE REDUX
+    - make sure to go and export getPosts() from the actions
+    - now, time to to get and create the items/posts; Create and go inside posts.js under the actions folder.
+      - import * as api from '../api'; means import everything as 'api' to reference it
+    - Next, create the ACTION CREATORS: action creators are functions that return actions.
+      ** since we are retrieving DATA, the process WILL REQUIRE TO TAKE SOME TIME TO COMPLETE THE TASK **
+          - action creators are a function that define the action type along with the payload. they must return an/the ACTION
+
+            - const getPosts = () => {
+                const action = {
+                  type: 'FETCH_ALL',
+                  payload: []
+                }
+
+                return action;
+            }
+
+  ** THERE IS ONE MAIN ISSUE WITH THE ABOVE: we are fetching asynchronous data **
+  - to fetch all the post, it will require some time... imported Redux Thunk
+  - ReduxThunk provides the ability to pass an additional arrow function.
+    - to do this, add async and another property, 'dispatch'
+  - this creates a function that returns another function and we can now use async/await
+  - instead of RETURNING the action, you must now DISPATCH(ACTION)
+    - an ACTION is an OBJECT that includes the type and payload
+  - as soon as an action gets dispatched (from the useEffect inside App.js), it immediately goes to the posts reducer and there it handles handling the logic created inside the reducer.
+    - since the posts that are getting returned inside the reducer, instead of returning posts, you can instead return action.payload since that is our posts.
+
+
+PART 7: Retrieving the data within the components.
+- inside the component that needs the posts, which is the Post component.
+  - inside the Post component, you need to fetch the data from the global redux store...
+      - to accomplish this, we use   " SELECTORS "
+
+
+
 
 
 */
