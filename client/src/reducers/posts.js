@@ -13,4 +13,4 @@ const reducer = (posts = [], action) => {
 
 export default reducer;
 
-// will be used insde index.js... I will import post and pass posts to combineReducers
+//used insde index.js... I will import post and pass posts to combineReducers

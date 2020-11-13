@@ -18,7 +18,7 @@ export const getPosts = () => async (dispatch) => {
     payload: [] // data that we store posts in
   }
 
-  dispatch(action);
+  dispatch(action); // instead of return action
 }
 
 
@@ -28,7 +28,7 @@ that has the type and a payload. Since dealing with async logic, we have to add
 the async (dispatch) function provided by Redux-Thunk; Instead of returning the action,
 it must now be dispatched, dispatch(action)
 - to fetch all the post, it will require some time... imported Redux Thunk
-- ReduxThunk provides the ability to pass an additional arrow function.
+- ReduxThunk provides the ability to pass an additional arrow function.   "async (dispatch)"
   - to do this, add async and another property, 'dispatch'
     - this creates a function that returns another function and we can now use async/await
     - instead of RETURNING the action, you must now DISPATCH(ACTION)
