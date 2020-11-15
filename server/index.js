@@ -7,10 +7,9 @@ import postRoutes from './routes/posts.js'; // remember to use in middleware to 
 
 const app = express();
 
-
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
-app.use(cors());
+app.use(cors());  //    *** make sure to specificy this BEFORE making your routes using app.use()
 
 // Routes
 app.use('/posts', postRoutes);  // test route -> http://localhost:5000/posts (verified it works)

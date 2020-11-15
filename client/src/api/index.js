@@ -45,7 +45,7 @@ export const fetchPosts = () => axios.get(url);
       - import posts from './posts'; ---> don't forget to import
     c. In the reducers folder, open the 'posts.js' file
 
-  PART 3:
+  PART 2b:
     Reducers
     - What are reducers?
       - functions that accepts two arguements, state and action
@@ -63,6 +63,7 @@ export const fetchPosts = () => axios.get(url);
                 return posts;
             }
           }
+      - the reducer function is being called and used inside of the index.js file in the reducers folder
 
   PART 4: the provider and final steps...
     a. (inside src index.js) now that the store's function is fully setup, wrap the provider around <App />
@@ -92,8 +93,16 @@ export const fetchPosts = () => axios.get(url);
             dispatch(getPosts());
           }, [dispatch])
 
+    ----> const App = () => {
+            const classes = useStyles();
+            const dispatch = useDispatch();
+            useEffect(() => {
+              dispatch(getPosts());
+            }, [dispatch]);
 
-  PART 6: USE REDUX
+
+
+  PART 6: USE REDUX ---> starting by dispatching the getPosts action inside the App.js (still need to create getPost...)
     - make sure to go and export getPosts() from the actions
     - now, create the items/posts; Create and go inside posts.js under the actions folder.
       - import * as api from '../api'; means import everything from the 'actions' as 'api' to reference it
@@ -120,16 +129,16 @@ export const fetchPosts = () => axios.get(url);
   - as soon as an action gets dispatched (from the useEffect inside App.js), it immediately goes to the posts reducer and there it handles handling the logic created inside the reducer.
     - since the posts that are getting returned inside the reducer, instead of returning posts, you can instead return action.payload since that is our posts.
 
-    ACTION CREATORS - are functions that return an action. An action is an object
-      that has the type and a payload. Since dealing with async logic, we have to add
-      the async (dispatch) function provided by Redux-Thunk; Instead of returning the action,
-      it must now be dispatched, dispatch(action)
+    ACTION CREATORS - are functions that return an action.
+      - An action is an object that has the type and a payload.
+      - Since dealing with async logic, we have to add
+        the async (dispatch) function provided by Redux-Thunk; Instead of returning the action,
+        it must now be dispatched, dispatch(action)
       - to fetch all the post, it will require some time... imported Redux Thunk
       - ReduxThunk provides the ability to pass an additional arrow function.
         - to do this, add async and another property, 'dispatch'
           - this creates a function that returns another function and we can now use async/await
           - instead of RETURNING the action, you must now DISPATCH(ACTION)
-
       THE BEGINNING/BASIC SETUP:
       const getPosts = () => async (dispatch) => {
         const action = {
@@ -140,16 +149,17 @@ export const fetchPosts = () => axios.get(url);
   return action;
 
 PART 7: Retrieving the data within the components.
-- inside the component that needs the posts, which is the Post component.
-- need to fetch the data from the global redux store...
-  - to accomplish this, make use of  " SELECTORS " --> first, import { useSelector } from 'react-redux';
-  - call the useSelector hook; useSelector takes a callback function. In the function, it takes a parameter that gives us access to the entire store or 'state'.
-        - const posts = useSelector((state) => state.posts); // it is called 'posts' from the name I gave inside the reducers. "combineReducers({ posts })"
-        ** this does cause a cors error...
-          - to fix this, go inside the package.json and under private, write out "proxy": "httpl//localhost:5000",
+  - inside the component that needs the posts... (which is the Post component)
+  - need to fetch the data from the global redux store...
+    - to accomplish this, make use of  "SELECTORS " --> first, import { useSelector } from 'react-redux';
+    - call the useSelector hook;
+      - useSelector takes a callback function that takes a parameter which gives access to the entire store or 'state'.
+          - const posts = useSelector((state) => state.posts); // it is called 'posts' from the name I gave inside the reducers. "combineReducers({ posts })"
+          ** this does cause a cors error...
+            - to fix this, go inside the package.json and under private, write out "proxy": "httpl//localhost:5000",
 
 
-
+PART 8:  Implement the form in order to make a post request to database and have it add new post
 
 
 */
