@@ -23,7 +23,7 @@ const Form = () => {
   }
 
   const clear = () => {
-
+    setPostData("");
   }
 
   console.log("FORM COMPONENT")
@@ -31,7 +31,7 @@ const Form = () => {
   return (
     <Paper className={classes.paper}>
 
-      <form autocomplete="off" noValidate className={classes.form} onSubmit={handleSubmit}>
+      <form autoComplete="off" noValidate className={classes.form} onSubmit={handleSubmit}>
 
         <Typography variant="h6">Creating a Memory</Typography>
 
