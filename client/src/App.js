@@ -10,7 +10,7 @@ import useStyles from './styles';
 const App = () => {
 
   const classes = useStyles();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); // to get access and dispatch an action, we must define it.
 
   useEffect(() => {
     dispatch(getPosts());
@@ -41,5 +41,6 @@ const App = () => {
 }
 
 export default App;
+
 
 

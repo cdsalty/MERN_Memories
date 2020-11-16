@@ -4,6 +4,10 @@ const url = 'http://localhost:5000/posts';
 
 export const fetchPosts = () => axios.get(url);
 
+// To create a new post:
+export const createPost = (newPost) => {
+  axios.post(url, newPost);
+}
 
 /*
 - will be used to make the api calls
@@ -160,6 +164,13 @@ PART 7: Retrieving the data within the components.
 
 
 PART 8:  Implement the form in order to make a post request to database and have it add new post
+
+PART 9: To CREATE A NEW POST
+  - inside api index.js,
+    export const createPost = (newPost) => {
+      axios.post(url, newPost);
+    }
+  - inside of actions, post.js
 
 
 */

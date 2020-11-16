@@ -1,25 +1,21 @@
 import React, { useState } from 'react';
 import { TextField, Button, Typography, Paper } from '@material-ui/core';
 import FileBase from 'react-file-base64';
+import { useDispatch } from 'react-redux';
 import useStyles from './styles';
+import { createPost } from '../../actions/posts';
 
 
 const Form = () => {
   // State
-  const [postData, setPostData] = useState({
-    creator: '',
-    title: '',
-    message: '',
-    tags: '',
-    selectedFile: '',
-  });
-
+  const [postData, setPostData] = useState({ creator: '', title: '', message: '', tags: '', selectedFile: '' });
   const classes = useStyles();
-
+  const dispatch = useDispatch();
 
   // Events
-  const handleSubmit = () => {
-
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(createPost(postData));
   }
 
   const clear = () => {
@@ -30,11 +26,8 @@ const Form = () => {
 
   return (
     <Paper className={classes.paper}>
-
       <form autoComplete="off" noValidate className={classes.form} onSubmit={handleSubmit}>
-
-        <Typography variant="h6">Creating a Memory</Typography>
-
+        <Typography variant="h6">Create a Memory</Typography>
         <TextField
           name="creator"
           variant="outlined"
@@ -43,7 +36,6 @@ const Form = () => {
           value={postData.creator}
           onChange={(e) => setPostData({ ...postData, creator: e.target.value })}
         />
-
         <TextField
           name="title"
           variant="outlined"
@@ -52,7 +44,6 @@ const Form = () => {
           value={postData.title}
           onChange={(e) => setPostData({ ...postData, title: e.target.value })}
         />
-
         <TextField
           name="message"
           variant="outlined"
@@ -86,7 +77,6 @@ const Form = () => {
         <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>
           Clear
         </Button>
-
       </form>
 
     </Paper>

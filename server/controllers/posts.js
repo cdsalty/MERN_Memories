@@ -15,19 +15,31 @@ export const getPosts = async (req, res) => {
 
 
 
+// export const createPost = async (req, res) => {
+//   // what to do? we need to get the information from the form in order to create a post.
+//   // post request always provide access to "req.body"; will come from the form data on the front end
+//   const post = req.body; // form data
+//   const newPost = new PostMessage(post);
+//   try {
+//     await newPost.save;
+//     res.status(200).json(newPost);
+//   } catch (error) {
+//     res.status(409).json({ message: error.message })
+//   }
+//   console.log("createPost function just ran");
+// }
 export const createPost = async (req, res) => {
-  // what to do? we need to get the information from the form in order to create a post.
-  // post request always provide access to "req.body"; will come from the form data on the front end
-  const post = req.body; // form data
-  const newPost = new PostMessage(post);
-  console.log(typeOf(newPost))
+  const { title, message, selectedFile, creator, tags } = req.body;
+
   try {
-    await newPost.save;
-    res.status(200).json(newPost);
+    const newPostMessage = new PostMessage({ title, message, selectedFile, creator, tags })
+    await newPostMessage.save();
+
+    res.status(201).json(newPostMessage);
   } catch (error) {
-    res.status(409).json({ message: error.message })
+    res.status(409).json({ message: error.message });
   }
-  console.log("createPost function just ran");
+  console.log("createPost function ran")
 }
 
 
