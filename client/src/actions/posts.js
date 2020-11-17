@@ -1,5 +1,6 @@
 // to import everything from the actions as 'api', use ' * ' to reference it to something.... api.fetchPost
-import * as api from '../api'
+import * as api from '../api';
+
 
 
 // ACTION CREATORS --> it will actually be called inside App.js, in the useEffect hook
@@ -21,6 +22,7 @@ export const createPost = (post) => async (dispatch) => {
     dispatch({ type: 'CREATE', payload: data });
   } catch (error) {
     console.log(error);
+    console.log("here is the error")
   }
 }
 

@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());  //    *** make sure to specificy this BEFORE making your routes using app.use()
 
 // Routes
-app.use('/posts', postRoutes);  // test route -> http://localhost:5000/posts (verified it works)
+app.use('/posts', postRoutes);  // test route -> http://localhost:5000/posts  (need to review.... )
 
 
 // SETUP MONGO DB
