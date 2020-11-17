@@ -3,22 +3,22 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
 
-import postRoutes from './routes/posts.js'; // remember to use in middleware to connect it to the application.
+import postRoutes from './routes/posts.js'; // provides access to the routes, specifically for getPosts and createPost
 
 const app = express();
+
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());  //    *** make sure to specificy this BEFORE making your routes using app.use()
 
 // Routes
-app.use('/posts', postRoutes);  // test route -> http://localhost:5000/posts  (need to review.... )
+app.use('/posts', postRoutes);  // adding prefix of 'posts' to all routes inside postRoutes -> http://localhost:5000/posts  (need to review.... )
+// every route inside the routes.post.js, routes will start with posts... post and get
 
 
 // SETUP MONGO DB
 const CONNECTION_URL = 'mongodb+srv://soltis:Matthews@cluster0.u0uqh.mongodb.net/<dbname>?retryWrites=true&w=majority'
-
-// Port
 const PORT = process.env.PORT || 5000;
 
 // connect to DB (takes the db url and an object of options)

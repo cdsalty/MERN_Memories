@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 const postSchema = mongoose.Schema({
   title: String,
   message: String,
+  creator: String,
   tags: [String],
   selectedFile: String,
   likeCount: {
@@ -15,7 +16,7 @@ const postSchema = mongoose.Schema({
   },
 });
 
-// to convert the schema to a model
+// after creating the schema, need to convert it to a model
 const PostMessage = mongoose.model('PostMessage', postSchema);
 
 export default PostMessage;
