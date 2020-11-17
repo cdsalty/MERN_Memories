@@ -6,7 +6,7 @@ import useStyles from './styles';
 const Posts = () => {
   const posts = useSelector((state) => state.posts); // it is called 'posts' from index.js "combineReducers({ posts })"
   const classes = useStyles();
-  console.log(posts)
+  console.log(posts);
 
   return (
     <>

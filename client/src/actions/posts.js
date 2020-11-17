@@ -1,6 +1,5 @@
-// to import everything from the actions as 'api', use ' * ' to reference it to something.... api.fetchPost
-import * as api from '../api';
 
+import * as api from '../api'; // to import everything from the actions as 'api'
 
 
 // ACTION CREATORS --> it will actually be called inside App.js, in the useEffect hook

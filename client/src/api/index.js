@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const url = 'http://localhost:5000/posts';
 
-export const fetchPosts = () => axios.get(url);
+export const fetchPosts = () => axios.get(url); // fetchPosts is inside actions > posts.js
 export const createPost = (newPost) => axios.post(url, newPost);  // create new post
 
 
@@ -30,7 +30,7 @@ export const createPost = (newPost) => axios.post(url, newPost);  // create new 
   PART 1:
     a. Install react-redux... npm install react-redux
     b. inside the main/root level file, index.js
-      - import { Provider } from 'react-redux' --> Provider will keep track of the store, the global state, in order to access it anywhere in the application
+      - import { Provider } from 'react-redux' --> Provider will keep track of the global state and provide access to state
       - import { createStore, applyMiddleware, compose } from 'redux';
       - import thunk from 'redux-thunk';
     c. Now, to set up REDUX starting with the store
