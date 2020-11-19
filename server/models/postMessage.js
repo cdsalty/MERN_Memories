@@ -16,6 +16,13 @@ const postSchema = mongoose.Schema({
   },
 });
 
+// https://expressjs.com/
+// https://mongoosejs.com/docs/
+
+// https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller
+// https://hackernoon.com/hn-images/0*7LesGFlzQzpGiP8m
+// https://media.geeksforgeeks.org/wp-content/uploads/mvc-block-diagram.png
+
 // after creating the schema, need to convert it to a model
 const PostMessage = mongoose.model('PostMessage', postSchema);
 

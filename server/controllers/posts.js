@@ -23,9 +23,10 @@ export const createPost = async (req, res) => {
   // post request always provide access to "req.body"; will come from the form data on the front end
   const post = req.body; // form data from the post
   const newPost = new PostMessage(post);
-  console.log(typeof (`${newPost}`));
+  // console.log(typeof (`${newPost}`));
   try {
-    await newPost.save;
+    await newPost.save();
+
     res.status(201).json(newPost);
     console.log("SUCCESS CREATEPOST MESSAGE")
   } catch (error) {
